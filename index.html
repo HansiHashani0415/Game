@@ -8,17 +8,19 @@
     <meta name="description" content="This is a simple game which will help you to improve your english knowledge.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#3498db">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="assets/css/normalize.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 
     <style>
-        #homePage{
+        #homePage {
             background-color: #3498db;
             height: 100vh;
             width: 100vw;
             position: relative;
         }
-        #homePage>h2{
+
+        #homePage > h2 {
             margin: auto;
             position: absolute;
             top: 165px;
@@ -26,7 +28,8 @@
             right: 0;
             width: max-content;
         }
-        #homePage>h1{
+
+        #homePage > h1 {
             margin: auto;
             position: absolute;
             top: 200px;
@@ -34,6 +37,7 @@
             right: 0;
             width: max-content;
         }
+
         #btnStart {
             position: absolute;
             left: 0;
@@ -45,12 +49,14 @@
             height: 40px;
             border-radius: 30px;
         }
-        #gamePage{
-            background-color: #ecf0f1;
+
+        #gamePage {
+            background-color:#ecf0f1;
             width: 100vw;
             height: 100vh;
         }
-        #container{
+
+        #container {
             display: flex;
             border: 2px solid grey;
             width: 75vw;
@@ -63,7 +69,8 @@
             margin: auto;
             border-radius: 30px;
         }
-        #letterContainer{
+
+        #letterContainer {
             display: grid;
             grid-template-columns: 80px 80px 80px 80px;
             grid-gap: 30px 30px;
@@ -76,7 +83,8 @@
             top: 0;
             bottom: 130px;
         }
-        #wordContainer{
+
+        #wordContainer {
             border: 2px solid grey;
             display: grid;
             grid-template-columns: 80px 80px 80px 80px 80px;
@@ -90,7 +98,8 @@
             margin: auto;
             height: 75vh;
         }
-        .letter{
+
+        .letter {
             color: white;
             border: 2px solid blue;
             background-color: #0d6efd;
@@ -99,7 +108,8 @@
             cursor: pointer;
             font-size: 55px;
         }
-        #btnContainer{
+
+        #btnContainer {
             width: 75vw;
             height: 80px;
             position: absolute;
@@ -108,7 +118,8 @@
             right: 0;
             margin: auto;
         }
-        #btnReady{
+
+        #btnReady {
             width: 90px;
             height: 45px;
             position: absolute;
@@ -119,7 +130,8 @@
             border-radius: 30px;
             font-weight: bold;
         }
-        #btnRestart{
+
+        #btnRestart {
             width: 90px;
             height: 45px;
             position: absolute;
@@ -130,15 +142,18 @@
             border-radius: 30px;
             font-weight: bold;
         }
-        #btnHome{
+
+        #btnHome {
             border-radius: 30px;
         }
-        #btnEndWord{
+
+        #btnEndWord {
             position: absolute;
             bottom: 190px;
             left: 370px;
             margin: auto;
         }
+
         #wordContainer > div {
             width: 70px;
             height: 70px;
@@ -146,10 +161,12 @@
             color: white;
             font-size: 44px;
         }
-        #countdown{
+
+        #countdown {
             color: black;
         }
-        #timer{
+
+        #timer {
             display: flex;
             flex-direction: row;
             position: absolute;
@@ -157,12 +174,14 @@
             top: 63px;
             left: 85px;
         }
-        #timer>p{
+
+        #timer > p {
             font-size: 20px;
             color: red;
             font-weight: bold;
         }
-        #p1{
+
+        #p1 {
             font-weight: bold;
             font-size: 20px;
             position: absolute;
@@ -172,7 +191,7 @@
             width: max-content;
         }
 
-</style>
+    </style>
 
 </head>
 <body>
@@ -180,10 +199,10 @@
     <section id="homePage">
         <h2>Welcome to</h2>
         <h1>WordZap..</h1>
-        <button id="btnStart"  type="button" class="btn btn-danger">Start</button>
+        <button id="btnStart" type="button" class="btn btn-danger">Start</button>
     </section>
     <section id="gamePage">
-        <button id="btnHome"  type="button" class="btn btn-primary">Home</button>
+        <button id="btnHome" type="button" class="btn btn-primary">Home</button>
         <section id="container">
             <section>
                 <section id="letterContainer">
@@ -203,48 +222,48 @@
                         <p> : </p>
                         <p id="countdown">0</p>
                     </div>
-                    <button id="btnEndWord"  type="button" class="btn btn-success">End Word</button>
+                    <button id="btnEndWord" type="button" class="btn btn-success">End Word</button>
                 </section>
             </section>
             <section id="wordContainer"></section>
         </section>
         <section id="btnContainer">
-            <button id="btnReady"  type="button" class="btn btn-success">Ready</button>
-            <button id="btnRestart"  type="button" class="btn btn-warning">Restart</button>
+            <button id="btnReady" type="button" class="btn btn-success">Ready</button>
+            <button id="btnRestart" type="button" class="btn btn-warning">Restart</button>
         </section>
     </section>
-</section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+</section>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
     // $("#btnRestart").css("display","none");
     // $("#btnEndWord").css("display","none");
 
-    $("#gamePage").css("display","none");
-    $("#homePage").css("display","block");
+    $("#gamePage").css("display", "none");
+    $("#homePage").css("display", "block");
 
     $("#btnStart").click(function () {
-        $("#gamePage").css("display","block");
-        $("#homePage").css("display","none");
+        $("#gamePage").css("display", "block");
+        $("#homePage").css("display", "none");
 
     });
 
     $("#btnHome").click(function () {
-        $("#gamePage").css("display","none");
-        $("#homePage").css("display","block");
+        $("#gamePage").css("display", "none");
+        $("#homePage").css("display", "block");
 
     });
 
-    var dictionary = ["TIN","PET","PAT","QUOTE","KIT","KILL","FAN","CAR", "BAG", "CAT", "NET", "BAT", "MAT", "MAN", "WOMEN", "GIRL", "BOY", "MAY", "CLASS", "RAT", "DOG", "BIRD", "INK", "QUEUE", "BED", "BALL","HAT","VAN","FAT"];
+    var dictionary = ["TIN", "PET", "PAT", "QUOTE", "KIT", "KILL", "FAN", "CAR", "BAG", "CAT", "NET", "BAT", "MAT", "MAN", "WOMEN", "GIRL", "BOY", "MAY", "CLASS", "RAT", "DOG", "BIRD", "INK", "QUEUE", "BED", "BALL", "HAT", "VAN", "FAT", "SIT", "AND", "ARE", "APE", "ACE", "ACT", "ASK", "ARM", "AGE", "AGO", "AIR", "ATE", "ALL", "BUT", "BYE", "BAD", "BIG", "BED", "BAT", "BUS", "BAG", "BOX", "BIT", "BEE", "BUY", "BUN", "CUB", "CAT", "CAR", "CUT", "COW", "CRY", "CAB", "CAN", "DAD", "DAB", "DAM", "DIG", "DUG", "DEN", "DOT", "DIP", "DAY", "EAR", "EYE", "EAT", "END", "ELF", "EGG", "FAR", "FAT", "FEW", "FAN", "FUN", "FIT", "FIN", "FOX", "FIX", "FLY", "FRY", "FOR", "GOT", "GET", "GOD", "GEL", "GAS", "HAT", "HIT", "HAS", "HAD", "HOW", "HER", "HIS", "HEN", "ICE", "ILL", "JAB", "JUG", "JET", "JAM", "JAR", "JOB", "JOG", "KIT", "KEY", "LOT", "LIT", "LET", "LAY", "MAT", "MAD", "MUG", "MIX", "MAP", "MUM", "MUD", "MOM", "MET", "NET", "NEW", "NAP", "NOW", "NOD", "NOT", "NUT", "OAR", "ONE", "OUT", "OWL", "OLD", "OWN", "ODD", "OUR", "PEG", "PAW", "PUP", "PIT", "PUT", "POT", "POP", "PIN", "RAG", "RUB", "ROW", "RUG", "RUN", "RAP", "RAM", "SOW", "SEE", "SEA", "SAW", "SET", "SIT", "SIR", "SAT", "SOB", "TAP", "TIP", "TOP", "TUG", "TOW", "TOE", "TAN", "TEN", "TWO", "USE", "VET", "WAS", "WET", "WIN", "WON", "WIG", "WAR", "WHY", "WHO", "WAY", "WOW", "YOU", "YES", "YAK", "YET", "ZIP", "ZAP", "ANY", "ART", "APT", "ANT", "AXE", "AWL", "APP", "AIL", "ARK", "ADD", "AMP", "AID", "AIM", "ARC", "ASH", "AWE", "ABLE", "ACTS", "ADDS", "AFAR", "AGED", "AGES", "AIDS", "AIMS", "ALAS", "AIRS", "ALLY", "ALSO", "AMEN", "ANEW", "ANTS", "AREA", "ARMY", "ARMS", "ARTS", "ASKS", "ATOM", "AUNT", "AUTO", "AWAY", "AXEL", "AXIS", "AXES", "BEEN", "BACK", "BOTH", "BEST", "BANK", "BOOK", "BASE", "BODY", "BILL", "BLUE", "BALL", "BORN", "BABY", "BEAT", "BAND", "BEAR", "BELL", "BUSY", "BOND", "BUSH", "BOAT", "BULK", "BOWL", "BIRD", "BLOW", "BONE", "BALD", "BOON", "BEEP", "BANS", "BASH", "BUFF", "BURN", "BULL", "BONY", "BLOT", "BEAD", "BARD", "BRAY", "BUNK", "BURR", "BRAN", "BALE", "BODE", "BECK", "BOAR", "BARN", "BUZZ", "BEAN", "BIND", "BUCK", "BATS", "BULB", "BLOT", "BRED", "BURY", "BLOG", "BOIL", "BATH","BOSS","BELT","BOOM","BLUR","BROW","BASS","BIAS","BARE","BEAR","BOLD","BEEF","BENT","BIKE","BOOT","BEND","BEAM","BITE","BLEW","BAIL","BORE","BANG","BUMP","BOUT","BARK","BREW","BAIT","BILE","BAKE","CALL","CARD","CAST","CASE","CARE","CURE","CUTE","COOL","CURT","CURD","CURB","CURL","CORN","COIR","CASH","CHAT","CHOW","CITE","CLUE","COAT","COOP","CORK","CHIN","CHIP","CLAW","COPE","CORE","CRIB","CROP","COST","COZY","COIL","COMB","COME","CART","CAPE","CUFF","CHEF","CHOP","CLAD","CLUB","COAX","CODE","COUP","CAME","CLAY","CLAN","CALM","CLAP","CRAB","CORD","COAL","CUBE","CLIP","CALF","CAGE","CAKE","CHEW","CHUM","CITY","CLOG","COIN","COLD","CROW","DARK","DIRT","DUST","DENT","DUNG","DROP","DRIP","DULL","DOOM","DUPE","DRUM","DOTE","DRAW","DENY","DATE","DECK","DEFY","DIME","DICE","DIET","DIRE","DUET","DARE","DOME","DOOR","DEEM","DOCK","DIAL","DREW","DAZE","DODO","DAWN","DOSE","DEER","DAME","DEAL","DONE","DUNE","DRAB","DEAF","DART","DASH","DISH","DOVE","DIVE","DUMP","DUCK","DAFT","DATA","DUDE","DEEP"];
 
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-    var array1=["C","V","N","D","T","I","F","A"]
+    var array1 = ["C", "V", "N", "D", "T", "I", "F", "A"]
     shuffleArray(letters);
 
     var shuffledLetters;
 
-    /* Randomize array in-place using Durstenfeld shuffle algorithm */
     function shuffleArray(letters) {
         for (var i = letters.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
@@ -254,17 +273,16 @@
             console.log(letters);
             shuffledLetters = letters;
 
-            $("#letterContainer>#1").text(array1[0]);
-            $("#letterContainer>#2").text(array1[1]);
-            $("#letterContainer>#3").text(array1[2]);
-            $("#letterContainer>#4").text(array1[3]);
-            $("#letterContainer>#5").text(array1[4]);
-            $("#letterContainer>#6").text(array1[5]);
-            $("#letterContainer>#7").text(array1[6]);
-            $("#letterContainer>#8").text(array1[7]);
+            $("#letterContainer>#1").text(shuffledLetters[0]);
+            $("#letterContainer>#2").text(shuffledLetters[1]);
+            $("#letterContainer>#3").text(shuffledLetters[2]);
+            $("#letterContainer>#4").text(shuffledLetters[3]);
+            $("#letterContainer>#5").text(shuffledLetters[4]);
+            $("#letterContainer>#6").text(shuffledLetters[5]);
+            $("#letterContainer>#7").text(shuffledLetters[6]);
+            $("#letterContainer>#8").text(shuffledLetters[7]);
         }
     }
-
 
 
     var currentWords = [];
@@ -277,7 +295,13 @@
         word += text;
         word.split("d");
         console.log(word);
-        $("#wordContainer").append(`<div class="selectedLetter">${text}</div>`);
+        if (!searchInCurrentAddedWords(word)){
+            currentWords.push(word);
+            console.log(currentWords);
+            $("#wordContainer").append(`<div id="l" class="selectedLetter">${text}</div>`);
+        }else{
+            $("#wordContainer").parentElement.removeChild($("#l"));
+        }
     });
 
     function searchInDictionary(word) {
@@ -291,16 +315,16 @@
         return false;
     }
 
-    // function searchInCurrentAddedWords(word) {
-    //   for (let i = 0; i < currentWords.length; i++) {
-    //     if(currentWords[i]==word){
-    //       console.log(currentWords[i]);
-    //       console.log("Alredy in..")
-    //       return true;
-    //     }
-    //   }
-    //   return false;
-    // }
+    function searchInCurrentAddedWords(word) {
+      for (let i = 0; i < currentWords.length; i++) {
+        if(currentWords[i]==word){
+          console.log(currentWords[i]);
+          console.log("Already in..")
+          return true;
+        }
+      }
+      return false;
+    }
 
     $("#btnEndWord").click(function () {
         if (searchInDictionary(word)) {
@@ -323,6 +347,12 @@
 
             }
         } else {
+            swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
             console.log("Try Again..");
         }
     });
@@ -335,9 +365,9 @@
 
     $("#btnReady").click(function () {
         shuffleArray(letters);
-        $("#btnEndWord").css("display","block");
-        $("#btnRestart").css("display","block");
-        $("#btnReady").css("display","none");
+        $("#btnEndWord").css("display", "block");
+        $("#btnRestart").css("display", "block");
+        $("#btnReady").css("display", "none");
     });
 
     $("#btnRestart").click(function () {
@@ -346,12 +376,12 @@
 
     /////////////////////////////////////////////////////////
 
-    $("#p1").css("display","block");
+    $("#p1").css("display", "block");
 
     let timerID;
 
     $("#btnReady").click(function () {
-        $("#p1").css("display","none");
+        $("#p1").css("display", "none");
         clearInterval(timerID);
         timerID = setInterval(incrementValue, 300);
         console.log(timerID);
@@ -361,26 +391,46 @@
     let minCount = 0;
 
     function incrementValue() {
+
         $("#countdown").text(count11);
         count11++;
-        if (count11==60){
-            count11=count11-60;
+        if (count11 == 60) {
+            count11 = count11 - 60;
             minCount++;
             $("#min").text(minCount);
-            if (minCount==5){
+            if (minCount == 1) {
                 clearInterval(timerID);
+
+                swal.fire({
+                    title: 'Game Over..',
+                    text: "Score",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Play Again?'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                       shuffleArray(letters);
+                       // count11=0;
+                       //  incrementValue();
+                    window.location.reload();
+                        $("#gamePage").css("display", "block");
+                        $("#homePage").css("display", "none");
+                    }
+                })
             }
         }
     }
 
     $("#btnRestart").click(function () {
-        clearInterval(timerID); // stop a timer
+        clearInterval(timerID);
+        timerID = setInterval(incrementValue, 300);
     });
 
 
-    // how to stop a timeout
     let id = setTimeout(test, 200)
-    clearTimeout(id); // so if you wanna stop you can call clear Timeout
+    clearTimeout(id);
 
     function test() {
         console.log("call after 200 ms")
