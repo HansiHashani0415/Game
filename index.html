@@ -71,6 +71,10 @@
             font-size: 60px;
             text-align: center;
             height: 200px;
+            left: 25px;
+            position: absolute;
+            margin: auto;
+            top: 25px;
         }
         #wordContainer{
             border: 2px solid black;
@@ -80,10 +84,11 @@
             font-size: 60px;
             text-align: center;
             position: absolute;
-            right: 0;
+            right: 25px;
             bottom: 0;
             top: 0;
             margin: auto;
+            height: 52vh;
         }
         .letter{
             background-color: #0d6efd;
@@ -125,6 +130,9 @@
             border-radius: 30px;
             font-weight: bold;
         }
+        #btnHome{
+            border-radius: 30px;
+        }
 </style>
 
 </head>
@@ -136,6 +144,7 @@
         <button id="btnStart"  type="button" class="btn btn-danger">Start</button>
     </section>
     <section id="gamePage">
+        <button id="btnHome"  type="button" class="btn btn-primary">Home</button>
         <section id="container">
             <section id="letterContainer">
                 <div class="letter">A</div>
@@ -166,6 +175,13 @@
         $("#homePage").css("display","none");
 
     });
+
+    $("#btnHome").click(function () {
+        $("#gamePage").css("display","none");
+        $("#homePage").css("display","block");
+
+    });
+
 </script>
 </body>
 </html>
