@@ -9,9 +9,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#3498db">
     <link href="assets/css/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <style>
+        #homePage{
+            background-color: #3498db;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        #homePage>h2{
+            margin: auto;
+            position: absolute;
+            top: 165px;
+            left: 0;
+            right: 0;
+            width: max-content;
+        }
+        #homePage>h1{
+            margin: auto;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            right: 0;
+            width: max-content;
+        }
+        #btnStart {
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            right: 0;
+            top: 0;
+            margin: auto;
+            width: 80px;
+            height: 40px;
+        }
+</style>
 
 </head>
 <body>
-
+<section>
+    <section id="homePage">
+        <h2>Welcome to</h2>
+        <h1>WordZap..</h1>
+        <button id="btnStart"  type="button" class="btn btn-danger">Start</button>
+    </section>
+</section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 </body>
 </html>
