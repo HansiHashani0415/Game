@@ -49,6 +49,37 @@
             width: 100vw;
             height: 100vh;
         }
+        #container{
+            display: flex;
+            border: 2px solid red;
+            width: 80vw;
+            height: 60vh;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+        }
+        #letterContainer{
+            border: 2px solid green;
+            display: grid;
+            grid-template-columns: 80px 80px 80px 80px;
+            grid-gap: 30px 30px;
+            font-size: 60px;
+            text-align: center;
+        }
+        #wordContainer{
+            border: 2px solid black;
+            display: grid;
+            grid-template-columns: 80px 80px 80px 80px 80px;
+            grid-gap: 30px 30px;
+            font-size: 60px;
+            text-align: center;
+        }
+        .letter{
+            background-color: #0d6efd;
+        }
 </style>
 
 </head>
@@ -60,8 +91,17 @@
         <button id="btnStart"  type="button" class="btn btn-danger">Start</button>
     </section>
     <section id="gamePage">
-        <section>
-            <section id="letterContainer"></section>
+        <section id="container">
+            <section id="letterContainer">
+                <div class="letter"></div>
+                <div class="letter"></div>
+                <div class="letter"></div>
+                <div class="letter"></div>
+                <div class="letter"></div>
+                <div class="letter"></div>
+                <div class="letter"></div>
+                <div class="letter"></div>
+            </section>
             <section id="wordContainer"></section>
         </section>
         <section id="btnContainer">
