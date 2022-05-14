@@ -22,6 +22,6 @@
 - CSS
 - Java Script
 
-[Game URL]()
+[Game URL](http://localhost:63342/Word-Game/index.html?_ijt=f9hg3t5l391fijj0olimn8qbhv)
 
 ### Screenshots of my game
