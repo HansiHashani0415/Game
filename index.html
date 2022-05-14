@@ -52,9 +52,9 @@
         }
         #container{
             display: flex;
-            border: 2px solid red;
+            border: 2px solid grey;
             width: 75vw;
-            height: 60vh;
+            height: 85vh;
             position: absolute;
             left: 0;
             right: 0;
@@ -64,20 +64,20 @@
             border-radius: 30px;
         }
         #letterContainer{
-            border: 2px solid green;
             display: grid;
             grid-template-columns: 80px 80px 80px 80px;
             grid-gap: 30px 30px;
             font-size: 60px;
             text-align: center;
             height: 200px;
-            left: 25px;
+            left: 52px;
             position: absolute;
             margin: auto;
-            top: 25px;
+            top: 0;
+            bottom: 130px;
         }
         #wordContainer{
-            border: 2px solid black;
+            border: 2px solid grey;
             display: grid;
             grid-template-columns: 80px 80px 80px 80px 80px;
             grid-gap: 30px 30px;
@@ -88,18 +88,20 @@
             bottom: 0;
             top: 0;
             margin: auto;
-            height: 52vh;
+            height: 75vh;
         }
         .letter{
+            color: white;
+            border: 2px solid blue;
             background-color: #0d6efd;
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             cursor: pointer;
+            font-size: 55px;
         }
         #btnContainer{
             width: 75vw;
             height: 80px;
-            border: 1px solid deeppink;
             position: absolute;
             bottom: 70px;
             left: 0;
@@ -111,9 +113,8 @@
             height: 45px;
             position: absolute;
             top: 0;
-            bottom: 0;
-            left: 0;
-            right: 108px;
+            bottom: 15px;
+            left: 50px;
             margin: auto;
             border-radius: 30px;
             font-weight: bold;
@@ -123,9 +124,8 @@
             height: 45px;
             position: absolute;
             top: 0;
-            bottom: 0;
-            left: 125px;
-            right: 0;
+            bottom: 15px;
+            left: 165px;
             margin: auto;
             border-radius: 30px;
             font-weight: bold;
@@ -135,15 +135,42 @@
         }
         #btnEndWord{
             position: absolute;
-            bottom: 50px;
-            left: 300px;
+            bottom: 190px;
+            left: 370px;
             margin: auto;
         }
         #wordContainer > div {
             width: 80px;
             height: 80px;
-            background-color: green;
+            background-color: #34495e;
+            color: white;
         }
+        #countdown{
+            color: black;
+        }
+        #timer{
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            margin: auto;
+            top: 63px;
+            left: 85px;
+        }
+        #timer>p{
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
+        #p1{
+            font-weight: bold;
+            font-size: 20px;
+            position: absolute;
+            margin: auto;
+            left: 35px;
+            top: 20px;
+            width: max-content;
+        }
+
 </style>
 
 </head>
@@ -169,6 +196,12 @@
                     <div class="letter" id="8">H</div>
                 </section>
                 <section>
+                    <p id="p1">Create words as much as you can within 5 minutes..</p>
+                    <div id="timer">
+                        <p id="min">0</p>
+                        <p> : </p>
+                        <p id="countdown">0</p>
+                    </div>
                     <button id="btnEndWord"  type="button" class="btn btn-success">End Word</button>
                 </section>
             </section>
@@ -183,8 +216,8 @@
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
-    $("#btnRestart").css("display","none");
-    $("#btnEndWord").css("display","none");
+    // $("#btnRestart").css("display","none");
+    // $("#btnEndWord").css("display","none");
 
     $("#gamePage").css("display","none");
     $("#homePage").css("display","block");
@@ -201,10 +234,11 @@
 
     });
 
-    var dictionary = ["CAR", "BAG", "CAT", "NET", "BAT", "MAT", "MAN", "WOMEN", "GIRL", "BOY", "MAY", "CLASS", "RAT", "DOG", "BIRD", "INK", "QUEUE", "BED", "BALL","HAT"];
+    var dictionary = ["TIN","PET","PAT","QUOTE","KIT","KILL","FAN","CAR", "BAG", "CAT", "NET", "BAT", "MAT", "MAN", "WOMEN", "GIRL", "BOY", "MAY", "CLASS", "RAT", "DOG", "BIRD", "INK", "QUEUE", "BED", "BALL","HAT","VAN","FAT"];
 
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
+    var array1=["C","V","N","D","T","I","F","A"]
     shuffleArray(letters);
 
     var shuffledLetters;
@@ -219,14 +253,14 @@
             console.log(letters);
             shuffledLetters = letters;
 
-            $("#letterContainer>#1").text(shuffledLetters[0]);
-            $("#letterContainer>#2").text(shuffledLetters[1]);
-            $("#letterContainer>#3").text(shuffledLetters[2]);
-            $("#letterContainer>#4").text(shuffledLetters[3]);
-            $("#letterContainer>#5").text(shuffledLetters[4]);
-            $("#letterContainer>#6").text(shuffledLetters[5]);
-            $("#letterContainer>#7").text(shuffledLetters[6]);
-            $("#letterContainer>#8").text(shuffledLetters[7]);
+            $("#letterContainer>#1").text(array1[0]);
+            $("#letterContainer>#2").text(array1[1]);
+            $("#letterContainer>#3").text(array1[2]);
+            $("#letterContainer>#4").text(array1[3]);
+            $("#letterContainer>#5").text(array1[4]);
+            $("#letterContainer>#6").text(array1[5]);
+            $("#letterContainer>#7").text(array1[6]);
+            $("#letterContainer>#8").text(array1[7]);
         }
     }
 
@@ -308,6 +342,49 @@
     $("#btnRestart").click(function () {
         shuffleArray(letters);
     });
+
+    /////////////////////////////////////////////////////////
+
+    $("#p1").css("display","block");
+
+    let timerID;
+
+    $("#btnReady").click(function () {
+        $("#p1").css("display","none");
+        clearInterval(timerID);
+        timerID = setInterval(incrementValue, 300);
+        console.log(timerID);
+    });
+
+    let count11 = 1;
+    let minCount = 0;
+
+    function incrementValue() {
+        $("#countdown").text(count11);
+        count11++;
+        if (count11==60){
+            count11=count11-60;
+            minCount++;
+            $("#min").text(minCount);
+            if (minCount==5){
+                clearInterval(timerID);
+            }
+        }
+    }
+
+    $("#btnRestart").click(function () {
+        clearInterval(timerID); // stop a timer
+    });
+
+
+    // how to stop a timeout
+    let id = setTimeout(test, 200)
+    clearTimeout(id); // so if you wanna stop you can call clear Timeout
+
+    function test() {
+        console.log("call after 200 ms")
+    }
+
 
 </script>
 </body>
