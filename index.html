@@ -139,6 +139,11 @@
             left: 300px;
             margin: auto;
         }
+        #wordContainer > div {
+            width: 80px;
+            height: 80px;
+            background-color: green;
+        }
 </style>
 
 </head>
@@ -154,14 +159,14 @@
         <section id="container">
             <section>
                 <section id="letterContainer">
-                    <div class="letter">A</div>
-                    <div class="letter">B</div>
-                    <div class="letter">C</div>
-                    <div class="letter">D</div>
-                    <div class="letter">E</div>
-                    <div class="letter">F</div>
-                    <div class="letter">G</div>
-                    <div class="letter">H</div>
+                    <div class="letter" id="1">A</div>
+                    <div class="letter" id="2">B</div>
+                    <div class="letter" id="3">C</div>
+                    <div class="letter" id="4">D</div>
+                    <div class="letter" id="5">E</div>
+                    <div class="letter" id="6">F</div>
+                    <div class="letter" id="7">G</div>
+                    <div class="letter" id="8">H</div>
                 </section>
                 <section>
                     <button id="btnEndWord"  type="button" class="btn btn-success">End Word</button>
@@ -178,6 +183,9 @@
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
 
+    $("#btnRestart").css("display","none");
+    $("#btnEndWord").css("display","none");
+
     $("#gamePage").css("display","none");
     $("#homePage").css("display","block");
 
@@ -191,6 +199,114 @@
         $("#gamePage").css("display","none");
         $("#homePage").css("display","block");
 
+    });
+
+    var dictionary = ["CAR", "BAG", "CAT", "NET", "BAT", "MAT", "MAN", "WOMEN", "GIRL", "BOY", "MAY", "CLASS", "RAT", "DOG", "BIRD", "INK", "QUEUE", "BED", "BALL","HAT"];
+
+    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+    shuffleArray(letters);
+
+    var shuffledLetters;
+
+    /* Randomize array in-place using Durstenfeld shuffle algorithm */
+    function shuffleArray(letters) {
+        for (var i = letters.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = letters[i];
+            letters[i] = letters[j];
+            letters[j] = temp;
+            console.log(letters);
+            shuffledLetters = letters;
+
+            $("#letterContainer>#1").text(shuffledLetters[0]);
+            $("#letterContainer>#2").text(shuffledLetters[1]);
+            $("#letterContainer>#3").text(shuffledLetters[2]);
+            $("#letterContainer>#4").text(shuffledLetters[3]);
+            $("#letterContainer>#5").text(shuffledLetters[4]);
+            $("#letterContainer>#6").text(shuffledLetters[5]);
+            $("#letterContainer>#7").text(shuffledLetters[6]);
+            $("#letterContainer>#8").text(shuffledLetters[7]);
+        }
+    }
+
+
+
+    var currentWords = [];
+    let word = [];
+    var count = 0;
+    $("#letterContainer>div").click(function () {
+        var text = $(this).text();
+        console.log($(this).text());
+        count++;
+        word += text;
+        word.split("d");
+        console.log(word);
+        $("#wordContainer").append(`<div class="selectedLetter">${text}</div>`);
+    });
+
+    function searchInDictionary(word) {
+        for (let i = 0; i < dictionary.length; i++) {
+            if (dictionary[i] == word) {
+                console.log(dictionary[i]);
+                console.log("Matched..")
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // function searchInCurrentAddedWords(word) {
+    //   for (let i = 0; i < currentWords.length; i++) {
+    //     if(currentWords[i]==word){
+    //       console.log(currentWords[i]);
+    //       console.log("Alredy in..")
+    //       return true;
+    //     }
+    //   }
+    //   return false;
+    // }
+
+    $("#btnEndWord").click(function () {
+        if (searchInDictionary(word)) {
+            console.log("Already in dictionary..");
+            currentWords.push(word);
+            // if (!searchInCurrentAddedWords(word)){
+            word = "";
+            if (count < 5) {
+                var num = 5 - count;
+                for (let i = 0; i < num; i++) {
+                    $("#wordContainer").append(`<div></div>`);
+                }
+                console.log("End..");
+                count = 0;
+                currentWords.slice(0, currentWords.length);
+                // }
+                //else {
+                //     console.log("Alredy in.. try anoher word..")
+                //   }
+
+            }
+        } else {
+            console.log("Try Again..");
+        }
+    });
+
+    $("#btnAdd").click(function () {
+        dictionary.push(word);
+        console.log("New word added to the dictionary..")
+        word = "";
+    });
+
+    $("#btnReady").click(function () {
+        shuffleArray(letters);
+        $("#btnEndWord").css("display","block");
+        $("#btnRestart").css("display","block");
+        $("#btnReady").css("display","none");
+    });
+
+    $("#btnRestart").click(function () {
+        shuffleArray(letters);
     });
 
 </script>
