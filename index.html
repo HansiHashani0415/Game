@@ -133,6 +133,12 @@
         #btnHome{
             border-radius: 30px;
         }
+        #btnEndWord{
+            position: absolute;
+            bottom: 50px;
+            left: 300px;
+            margin: auto;
+        }
 </style>
 
 </head>
@@ -146,15 +152,20 @@
     <section id="gamePage">
         <button id="btnHome"  type="button" class="btn btn-primary">Home</button>
         <section id="container">
-            <section id="letterContainer">
-                <div class="letter">A</div>
-                <div class="letter">B</div>
-                <div class="letter">C</div>
-                <div class="letter">D</div>
-                <div class="letter">E</div>
-                <div class="letter">F</div>
-                <div class="letter">G</div>
-                <div class="letter">H</div>
+            <section>
+                <section id="letterContainer">
+                    <div class="letter">A</div>
+                    <div class="letter">B</div>
+                    <div class="letter">C</div>
+                    <div class="letter">D</div>
+                    <div class="letter">E</div>
+                    <div class="letter">F</div>
+                    <div class="letter">G</div>
+                    <div class="letter">H</div>
+                </section>
+                <section>
+                    <button id="btnEndWord"  type="button" class="btn btn-success">End Word</button>
+                </section>
             </section>
             <section id="wordContainer"></section>
         </section>
